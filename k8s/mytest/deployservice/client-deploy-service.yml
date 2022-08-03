@@ -1,0 +1,48 @@
+apiVersion: v1
+kind: Service
+metadata:
+  name: msa-client
+  labels:
+    app: msa-client
+    service: msa-client
+spec:
+  ports:
+  - port: 3000
+    name: http
+  selector:
+    app: msa-client
+---
+apiVersion: v1
+kind: ServiceAccount
+metadata:
+  name: msa-client-ac
+  labels:
+    account: msa-client
+---
+kind: Deployment
+apiVersion: apps/v1
+metadata:
+  name: msa-client-v1
+  labels:
+    app: msa-client
+    version: v1
+spec:
+  replicas: 2
+  selector:
+    matchLabels:
+      app: msa-client
+      version: v1
+  template:
+    metadata:
+      labels:
+        app: msa-client
+        version: v1
+    spec:
+      serviceAccountName: msa-client-ac
+      containers:
+        - name: msa-client
+          image: kyoungwoo95/msa-client:v1
+          imagePullPolicy: Always
+          ports:
+            - containerPort: 3000
+      restartPolicy: Always
