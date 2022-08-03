@@ -1,0 +1,10 @@
+version: '3.0'
+
+services:
+  msa-clinet:
+    image: kyoungwoo94/msa-clinet:v1
+    container_name: msa-clinet-v1
+    build:
+      context: ../../../..
+      dockerfile: ../dockerfile-client
+    command: sh
