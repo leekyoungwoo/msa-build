@@ -11,7 +11,7 @@ spec:
       name: http
       protocol: HTTP
     hosts:
-    - "ssr.test.com"
+    - "kwlee.test.com"
 ---
 apiVersion: networking.istio.io/v1alpha3
 kind: VirtualService
@@ -19,7 +19,7 @@ metadata:
   name: test-vs
 spec:
   hosts:
-  - "ssr.test.com"
+  - "kwlee.test.com"
   gateways:
   - test-gateway
   http:

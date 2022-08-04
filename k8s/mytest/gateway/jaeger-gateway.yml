@@ -1,7 +1,7 @@
 apiVersion: networking.istio.io/v1alpha3
 kind: Gateway
 metadata:
-  name: kiali-gateway
+  name: tracing-gateway
   namespace: istio-system
 spec:
   selector:
@@ -9,35 +9,35 @@ spec:
   servers:
   - port:
       number: 80
-      name: http-kiali
+      name: tracing-zipkin
       protocol: HTTP
     hosts:
-    - "kwlee.kiali.com"
+    - "jaeger.demo.test.com"
 ---
 apiVersion: networking.istio.io/v1alpha3
 kind: VirtualService
 metadata:
-  name: kiali-vs
+  name: tracing-vs
   namespace: istio-system
 spec:
   hosts:
-  - "kwlee.kiali.com"
+  - "jaeger.demo.test.com"
   gateways:
-  - kiali-gateway
+  - tracing-gateway
   http:
   - route:
     - destination:
-        host: kiali
+        host: tracing
         port:
-          number: 20001
+          number: 16686
 ---
 apiVersion: networking.istio.io/v1alpha3
 kind: DestinationRule
 metadata:
-  name: kiali
+  name: tracing
   namespace: istio-system
 spec:
-  host: kiali
+  host: tracing
   trafficPolicy:
     tls:
       mode: DISABLE
