@@ -12,7 +12,7 @@ spec:
       name: tracing-zipkin
       protocol: HTTP
     hosts:
-    - "jaeger.demo.test.com"
+    - "kwlee.jaeger.com"
 ---
 apiVersion: networking.istio.io/v1alpha3
 kind: VirtualService
@@ -21,7 +21,7 @@ metadata:
   namespace: istio-system
 spec:
   hosts:
-  - "jaeger.demo.test.com"
+  - "kwlee.jaeger.com"
   gateways:
   - tracing-gateway
   http:
