@@ -30,6 +30,8 @@ spec:
     route:
       - destination:
           host: kiali
+          port:
+            number: 20001
   - route:
     - destination:
         host: msa-client
