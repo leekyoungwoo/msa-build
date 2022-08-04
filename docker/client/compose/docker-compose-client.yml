@@ -1,0 +1,10 @@
+version: '3.0'
+
+services:
+  msa-client:
+    image: kyoungwoo94/msa-client:v1
+    container_name: msa-client-v1
+    build:
+      context: ../../../..
+      dockerfile: msa-build/docker/client/dockerfile-client
+    command: sh

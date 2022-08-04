@@ -41,7 +41,7 @@ spec:
       serviceAccountName: msa-client-ac
       containers:
         - name: msa-client
-          image: kyoungwoo95/msa-client:v1
+          image: kyoungwoo94/msa-client:v1
           imagePullPolicy: Always
           ports:
             - containerPort: 3000
