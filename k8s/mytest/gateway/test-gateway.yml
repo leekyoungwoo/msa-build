@@ -28,10 +28,10 @@ spec:
 #        prefix: /kiali
         exact: /kiali
     route:
-      - destination:
-          host: kiali
-          port:
-            number: 20001
+    - destination:
+        host: kiali
+        port:
+          number: 20001
   - route:
     - destination:
         host: msa-client
