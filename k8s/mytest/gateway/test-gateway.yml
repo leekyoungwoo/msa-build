@@ -23,6 +23,13 @@ spec:
   gateways:
   - appinfo-gateway
   http:
+  - match:
+    - uri:
+#        prefix: /kiali
+        exact: /kiali
+    route:
+      - destination:
+          host: kiali
   - route:
     - destination:
         host: msa-client
