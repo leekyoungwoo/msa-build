@@ -2,8 +2,8 @@ version: '3.0'
 
 services:
   grpc-build:
-    image: kyoungwoo94/grpc-build:test
-    container_name: msa-client-v1
+    image: kyoungwoo94/grpc-build:v1
+    container_name: grpc-build
     build:
       context: ..
       dockerfile: dockerfile-grpc-build
@@ -32,4 +32,11 @@ services:
         SWIFT_VERSION: 5.6-focal
         UPX_VERSION: 3.96
     platform: linux/amd64
-    command: sh
+    volumes:
+      - C:/workspace/msa/msa-build/grpc/proto:/proto
+    working_dir: /proto
+    command:
+      - |
+        --js_out=import_style=commonjs:.
+        --grpc-web_out=import_style=commonjs,mode=grpcwebtext:.
+        mytest/chat.protoc

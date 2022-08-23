@@ -226,4 +226,4 @@ RUN ln -s /usr/bin/protoc-gen-go-grpc /usr/bin/protoc-gen-grpc-go
 COPY protoc-wrapper /usr/bin/protoc-wrapper
 
 WORKDIR /proto
-#ENTRYPOINT ["protoc-wrapper", "-I/proto"]
+ENTRYPOINT ["protoc-wrapper", "-I/proto"]
