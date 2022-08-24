@@ -35,8 +35,16 @@ services:
     volumes:
       - C:/workspace/msa/msa-build/grpc/proto:/proto
     working_dir: /proto
+# python
     command:
       - |
-        --js_out=import_style=commonjs:.
-        --grpc-web_out=import_style=commonjs,mode=grpcwebtext:.
-        mytest/chat.protoc
+        --python_out=.
+        --grpc-python_out=.
+        mytest/chat.proto
+
+# javascript
+#    command:
+#      - |
+#        --js_out=import_style=commonjs:.
+#        --grpc-web_out=import_style=commonjs,mode=grpcwebtext:.
+#        mytest/chat.proto
