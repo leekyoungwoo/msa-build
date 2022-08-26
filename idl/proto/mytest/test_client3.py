@@ -28,6 +28,6 @@ if __name__ == '__main__':
         msg = input("message >> ")
         # 요청을 보내고 결과를 받는데, 서버에서 지정한 메서드에 요청시 사용할 proto 메시지 형식으로 요청을 전송합니다.
         try:
-            response = stub.send(chat_pb2.Message(user='client2', text=msg))
+            response = stub.send(chat_pb2.Message(user='client3', text=msg))
         except Exception as e:
             print("exit")
